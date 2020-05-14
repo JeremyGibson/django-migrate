@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -x
+set -o errexit
+set -o pipefail
+set -o nounset
 
-# Check migrations
-python manage.py makemigrations --dry-run | grep 'No changes detected' || (echo 'There are changes which require migrations.' && exit 1)
+if ! command python manage.py makemigrations --dry-run | grep 'No changes detected'; then
+    exit 1
+fi
