@@ -3,7 +3,8 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-if ! command python manage.py makemigrations --dry-run | grep 'No changes detected'; then
-    >&2 echo 'Migrations found'
+if command python manage.py makemigrations --dry-run | grep -q 'No changes detected'; then
+    exit 0
+else
     exit 1
 fi
