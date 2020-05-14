@@ -1,0 +1,7 @@
+- id: django-migrate
+  name: django-migrate
+  description: Check a django app for missing migrations
+  entry: hook/django_migrate.sh
+  language: script
+  types: [shell]
+  always_run: true
