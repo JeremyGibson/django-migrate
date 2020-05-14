@@ -5,7 +5,8 @@ from pathlib import Path
 def main():
     exitcode = 0
     cp = subprocess.run(
-        ["python", "manage.py", "makemigrations"], 
+        ["python", "manage.py", "makemigrations", "--dry-run"],
+        encoding="utf-8",
         capture_output=True
     )
     if cp.stdout:
